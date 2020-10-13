@@ -1,18 +1,17 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
 
 
 function defaultTask(cb) {
-    // gulp.src('images/*')
-    //     .pipe(imagemin())
-    //     .pipe(gulp.dest('build/images'))
-    
+
     gulp.src('style.css')
         .pipe(autoprefixer({
             cascade: false
         }))
-        .pipe(gulp.dest('build'))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('build'));
         cb();
   }
   
